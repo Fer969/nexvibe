@@ -1,0 +1,30 @@
+# Esta carpeta es para almacenar las imágenes del sitio
+
+## Estructura recomendada:
+
+```
+images/
+├── productos/          # Fotos de productos
+├── hero/              # Imágenes para la sección hero
+├── galeria/           # Fotos de la galería/comunidad
+├── sobre-nosotros/    # Imágenes de la sección sobre nosotros
+└── logo/              # Logo de la marca
+```
+
+## Recomendaciones de tamaño:
+
+- **Productos**: 800x1000px (ratio 3:4)
+- **Hero**: 1920x1080px mínimo
+- **Galería**: 800x800px (cuadradas)
+- **Logo**: SVG o PNG transparente
+
+## Formatos recomendados:
+- WebP para mejor compresión
+- JPG para fotografías
+- PNG para logos con transparencia
+
+## Optimización:
+- Comprimir todas las imágenes antes de subir
+- Peso máximo: 200KB por imagen
+- Usar herramientas como TinyPNG o Squoosh
+

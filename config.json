@@ -1,0 +1,30 @@
+{
+  "siteName": "NEXVIBE",
+  "slogan": "La nueva vibra del streetwear",
+  "description": "Ropa oversize, básica y con actitud, hecha en Colombia",
+  "contact": {
+    "whatsapp": "+573214710122",
+    "email": "hola@nexvibe.co",
+    "instagram": "@nexvibe.wear"
+  },
+  "colors": {
+    "primary": {
+      "black": "#000000",
+      "white": "#FFFFFF",
+      "greySmoke": "#F5F5F5"
+    },
+    "accent": {
+      "electricBlue": "#00AEEF",
+      "limeGreen": "#C6FF00"
+    }
+  },
+  "fonts": {
+    "primary": "Montserrat"
+  },
+  "socialMedia": {
+    "instagram": "https://instagram.com/nexvibe.co",
+    "tiktok": "https://tiktok.com/@nexvibe.co",
+    "facebook": "https://facebook.com/nexvibe.co"
+  }
+}
+

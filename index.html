@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXVIBE - La nueva vibra del streetwear. Ropa oversize, básica y con actitud, hecha en Colombia.">
+    <title>NEXVIBE. - La nueva vibra del streetwear</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="#home">
+                        <img src="images/logo/logo.png" alt="NEXVIBE" class="logo-image">
+                        <span class="logo-text">NEXVIBE<span class="dot">.</span></span>
+                    </a>
+                </div>
+                
+                <nav class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="#home" class="nav-link active">Inicio</a></li>
+                        <li><a href="#tienda" class="nav-link">Tienda</a></li>
+                        <li><a href="#sobre-nosotros" class="nav-link">Sobre nosotros</a></li>
+                        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    </ul>
+                </nav>
+
+                <div class="nav-icons">
+                    <a href="#" class="icon-link cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="icon-link social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="icon-link social-link">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/573214710122" target="_blank" class="icon-link social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-background">
+            <div class="hero-image"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-title-line">La nueva vibra</span>
+                <span class="hero-title-line">del streetwear<span class="accent-dot">.</span></span>
+            </h1>
+            <p class="hero-subtitle">Ropa sin ruido. Solo estilo.</p>
+            <a href="#tienda" class="btn btn-primary">
+                Ver colección <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        <div class="scroll-indicator">
+            <span>Desliza</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="productos-destacados" id="tienda">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Productos destacados</h2>
+                <p class="section-subtitle">La esencia del streetwear colombiano</p>
+            </div>
+
+            <div class="productos-grid">
+                <!-- Producto 1 -->
+                <div class="producto-card">
+                    <div class="producto-image">
+                        <div class="producto-badge">Nuevo</div>
+                        <img src="images/productos/camiseta_negra.png" alt="Camiseta Negra NEXVIBE" loading="lazy">
+                        <div class="producto-overlay">
+                            <button class="btn-add-cart" data-product="Camiseta Negra Oversize" data-price="85000">
+                                <i class="fas fa-shopping-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Camiseta Negra Oversize</h3>
+                        <p class="producto-descripcion">Camiseta oversize 100% algodón</p>
+                        <p class="producto-precio">$85,000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="producto-card">
+                    <div class="producto-image">
+                        <div class="producto-badge hot">Hot</div>
+                        <img src="images/productos/sudadera_negra.png" alt="Sudadera Negra NEXVIBE" loading="lazy">
+                        <div class="producto-overlay">
+                            <button class="btn-add-cart" data-product="Sudadera Negra Oversize" data-price="135000">
+                                <i class="fas fa-shopping-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Sudadera Negra Oversize</h3>
+                        <p class="producto-descripcion">Sudadera premium con capucha</p>
+                        <p class="producto-precio">$135,000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Producto 3 -->
+                <div class="producto-card">
+                    <div class="producto-image">
+                        <img src="images/productos/camiseta_blanca.png" alt="Camiseta Blanca NEXVIBE" loading="lazy">
+                        <div class="producto-overlay">
+                            <button class="btn-add-cart" data-product="Camiseta Blanca Oversize" data-price="85000">
+                                <i class="fas fa-shopping-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Camiseta Blanca Oversize</h3>
+                        <p class="producto-descripcion">Camiseta oversize 100% algodón</p>
+                        <p class="producto-precio">$85,000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Producto 4 -->
+                <div class="producto-card">
+                    <div class="producto-image">
+                        <img src="images/productos/gorra_negra.png" alt="Gorra Negra NEXVIBE" loading="lazy">
+                        <div class="producto-overlay">
+                            <button class="btn-add-cart" data-product="Gorra Negra Urban" data-price="65000">
+                                <i class="fas fa-shopping-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Gorra Negra Urban</h3>
+                        <p class="producto-descripcion">Gorra ajustable estilo urbano</p>
+                        <p class="producto-precio">$65,000 COP</p>
+                    </div>
+                </div>
+
+                <!-- Producto 5 -->
+                <div class="producto-card">
+                    <div class="producto-image">
+                        <div class="producto-badge">Nuevo</div>
+                        <img src="images/productos/gorra_blanca.png" alt="Gorra Blanca NEXVIBE" loading="lazy">
+                        <div class="producto-overlay">
+                            <button class="btn-add-cart" data-product="Gorra Blanca Urban" data-price="65000">
+                                <i class="fas fa-shopping-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="producto-info">
+                        <h3 class="producto-nombre">Gorra Blanca Urban</h3>
+                        <p class="producto-descripcion">Gorra ajustable estilo urbano</p>
+                        <p class="producto-precio">$65,000 COP</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre NEXVIBE -->
+    <section class="sobre-nosotros" id="sobre-nosotros">
+        <div class="container">
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <h2 class="section-title">Sobre NEXVIBE<span class="accent-dot">.</span></h2>
+                    <p class="sobre-description">
+                        NEXVIBE nació en Colombia para quienes visten sin seguir reglas.
+                        Ropa hecha con esencia minimalista, actitud urbana y buena vibra.
+                    </p>
+                    <p class="sobre-description">
+                        Creemos en el poder de la simplicidad y la autenticidad. 
+                        Cada prenda es diseñada para expresar tu estilo sin complicaciones,
+                        con la calidad y comodidad que mereces.
+                    </p>
+                    <div class="sobre-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>100% Algodón Premium</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Diseño Oversize</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Hecho en Colombia</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Actitud Urbana</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería / Comunidad -->
+    <section class="galeria" id="galeria">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">#WearTheVibe</h2>
+                <p class="section-subtitle">Nuestra comunidad vistiendo NEXVIBE</p>
+            </div>
+
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <div class="galeria-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="galeria-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>1.2k</span>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <div class="galeria-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="galeria-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>856</span>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <div class="galeria-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="galeria-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>2.1k</span>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <div class="galeria-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="galeria-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>1.5k</span>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <div class="galeria-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="galeria-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>987</span>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <div class="galeria-placeholder">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="galeria-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>1.8k</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="galeria-cta">
+                <a href="https://instagram.com" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-instagram"></i> Síguenos en Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="contacto-content">
+                <div class="contacto-info">
+                    <h2 class="section-title">Contáctanos<span class="accent-dot">.</span></h2>
+                    <p class="contacto-description">
+                        ¿Tienes preguntas? Estamos aquí para ayudarte. 
+                        Escríbenos y te responderemos lo antes posible.
+                    </p>
+                    
+                    <div class="contacto-methods">
+                        <div class="contacto-method">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>+57 321 471 0122</p>
+                            </div>
+                        </div>
+                        <div class="contacto-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>hola@nexvibe.co</p>
+                            </div>
+                        </div>
+                        <div class="contacto-method">
+                            <i class="fab fa-instagram"></i>
+                            <div>
+                                <h4>Instagram</h4>
+                                <p>@nexvibe.wear</p>         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contacto-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="nombre" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="telefono" placeholder="Teléfono (opcional)">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="mensaje" rows="5" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Enviar mensaje <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <img src="images/logo/logo.png" alt="NEXVIBE" class="logo-image">
+                        <span class="logo-text">NEXVIBE<span class="dot">.</span></span>
+                    </div>
+                    <p>La nueva vibra del streetwear.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/573214710122" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Tienda</h4>
+                        <ul>
+                            <li><a href="#tienda">Todos los productos</a></li>
+                            <li><a href="#tienda">Camisetas</a></li>
+                            <li><a href="#tienda">Hoodies</a></li>
+                            <li><a href="#tienda">Básicos</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Información</h4>
+                        <ul>
+                            <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+                            <li><a href="#contacto">Contacto</a></li>
+                            <li><a href="#">Envíos</a></li>
+                            <li><a href="#">Cambios y devoluciones</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Términos y condiciones</a></li>
+                            <li><a href="#">Política de privacidad</a></li>
+                            <li><a href="#">Política de cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 NEXVIBE. Todos los derechos reservados. Hecho con <i class="fas fa-heart"></i> en Colombia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/573214710122?text=Hola!%20Quiero%20hacer%20un%20pedido" 
+       class="whatsapp-float" 
+       target="_blank"
+       aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Carrito</h3>
+            <button class="cart-close" id="cartClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">$0 COP</span>
+            </div>
+            <button class="btn btn-primary btn-checkout">
+                Finalizar compra <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Product Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-product">
+                <div class="modal-image">
+                    <img id="modalProductImage" src="" alt="">
+                </div>
+                
+                <div class="modal-info">
+                    <div class="modal-badge" id="modalBadge"></div>
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <p class="modal-description" id="modalDescription"></p>
+                    <p class="modal-price" id="modalPrice"></p>
+                    
+                    <!-- Tallas -->
+                    <div class="modal-options">
+                        <h3>Tallas disponibles:</h3>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="S">S</button>
+                            <button class="size-btn" data-size="M">M</button>
+                            <button class="size-btn" data-size="L">L</button>
+                            <button class="size-btn" data-size="XL">XL</button>
+                            <button class="size-btn" data-size="XXL">XXL</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Colores -->
+                    <div class="modal-options">
+                        <h3>Colores:</h3>
+                        <div class="color-options">
+                            <button class="color-btn active" data-color="negro" style="background-color: #000;"></button>
+                            <button class="color-btn" data-color="blanco" style="background-color: #fff; border: 1px solid #ddd;"></button>
+                            <button class="color-btn" data-color="gris" style="background-color: #808080;"></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Cantidad -->
+                    <div class="modal-options">
+                        <h3>Cantidad:</h3>
+                        <div class="quantity-selector">
+                            <button class="qty-btn" id="qtyMinus">-</button>
+                            <span class="qty-number" id="qtyNumber">1</span>
+                            <button class="qty-btn" id="qtyPlus">+</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones de acción -->
+                    <div class="modal-actions">
+                        <button class="btn btn-primary btn-add-to-cart" id="modalAddToCart">
+                            <i class="fas fa-shopping-bag"></i> Agregar al carrito
+                        </button>
+                        <button class="btn btn-secondary" id="modalBuyNow">
+                            <i class="fas fa-bolt"></i> Comprar ahora
+                        </button>
+                    </div>
+                    
+                    <!-- Información adicional -->
+                    <div class="modal-details">
+                        <h4>Detalles del producto:</h4>
+                        <ul>
+                            <li>100% Algodón premium</li>
+                            <li>Corte oversize cómodo</li>
+                            <li>Hecho en Colombia</li>
+                            <li>Lavado a máquina</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
