@@ -4,21 +4,20 @@
    =================================== */
 
 // ===================================
-// Estado global del carrito
+// Estado global del carrito y productos
 // ===================================
 let cart = [];
+let productos = [];
 
 // ===================================
 // Inicialización
 // ===================================
 document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
-    initCart();
+    loadProducts(); // Cargar productos primero
     initContactForm();
     initScrollEffects();
     initAnimations();
-    initProductModal();
-    initStockSystem();
     loadCartFromStorage();
 });
 
@@ -84,6 +83,101 @@ function initNavigation() {
             }
         });
     });
+}
+
+// ===================================
+// Cargar Productos desde config.json
+// ===================================
+async function loadProducts() {
+    try {
+        const response = await fetch('config.json');
+        const config = await response.json();
+        productos = config.productos || [];
+        
+        if (productos.length > 0) {
+            renderProducts(productos);
+            // Inicializar sistemas después de renderizar productos
+            setTimeout(() => {
+                initCart();
+                initProductModal();
+                initStockSystem();
+            }, 100);
+        } else {
+            showNoProductsMessage();
+        }
+    } catch (error) {
+        console.error('Error cargando productos:', error);
+        showErrorMessage();
+    }
+}
+
+function renderProducts(productList) {
+    const productosGrid = document.getElementById('productosGrid');
+    
+    if (!productosGrid) return;
+    
+    // Limpiar grid
+    productosGrid.innerHTML = '';
+    
+    // Filtrar solo productos activos
+    const productosActivos = productList.filter(p => p.activo);
+    
+    productosActivos.forEach(producto => {
+        const productCard = createProductCard(producto);
+        productosGrid.appendChild(productCard);
+    });
+}
+
+function createProductCard(producto) {
+    const card = document.createElement('div');
+    card.className = 'producto-card';
+    card.setAttribute('data-stock', producto.stock);
+    card.setAttribute('data-product-id', producto.id);
+    
+    // Badge de categoría si existe
+    const badgeHTML = producto.badge ? 
+        `<div class="producto-badge ${producto.badge.toLowerCase()}">${producto.badge}</div>` : '';
+    
+    card.innerHTML = `
+        <div class="producto-image">
+            ${badgeHTML}
+            <div class="stock-badge"></div>
+            <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
+            <div class="producto-overlay">
+                <button class="btn-add-cart" data-product="${producto.nombre}" data-price="${producto.precio}">
+                    <i class="fas fa-shopping-bag"></i> Agregar
+                </button>
+            </div>
+        </div>
+        <div class="producto-info">
+            <h3 class="producto-nombre">${producto.nombre}</h3>
+            <p class="producto-descripcion">${producto.descripcion}</p>
+            <p class="producto-precio">$${producto.precio.toLocaleString()} COP</p>
+            <p class="producto-stock"></p>
+        </div>
+    `;
+    
+    return card;
+}
+
+function showNoProductsMessage() {
+    const productosGrid = document.getElementById('productosGrid');
+    productosGrid.innerHTML = `
+        <div class="loading-products">
+            <i class="fas fa-box-open"></i>
+            <p>No hay productos disponibles en este momento.</p>
+        </div>
+    `;
+}
+
+function showErrorMessage() {
+    const productosGrid = document.getElementById('productosGrid');
+    productosGrid.innerHTML = `
+        <div class="loading-products">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Error al cargar los productos. Por favor, recarga la página.</p>
+        </div>
+    `;
 }
 
 // ===================================

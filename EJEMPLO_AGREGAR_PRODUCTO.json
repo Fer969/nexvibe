@@ -1,0 +1,108 @@
+{
+  "_comentario": "Este es un EJEMPLO de cómo agregar un nuevo producto",
+  "_instrucciones": "Copia el objeto de producto de abajo y pégalo en config.json dentro del array 'productos'",
+  
+  "ejemplo_producto_nuevo": {
+    "id": "pantalon-jogger-001",
+    "nombre": "Pantalón Jogger Urban",
+    "descripcion": "Pantalón jogger cómodo con bolsillos",
+    "precio": 120000,
+    "stock": 18,
+    "imagen": "images/productos/pantalon_jogger.png",
+    "badge": "Nuevo",
+    "categoria": "pantalones",
+    "tallas": ["S", "M", "L", "XL", "XXL"],
+    "colores": ["negro", "gris", "verde militar"],
+    "activo": true
+  },
+
+  "_notas": [
+    "El ID debe ser único para cada producto",
+    "El precio es un número SIN puntos ni comas",
+    "El stock indica las unidades disponibles",
+    "Si badge es null, no aparecerá ninguna etiqueta",
+    "Si activo es false, el producto no se mostrará en la tienda"
+  ],
+
+  "_badges_disponibles": {
+    "Nuevo": "Badge azul eléctrico - Para productos recién agregados",
+    "Hot": "Badge verde lima - Para productos populares o en oferta",
+    "null": "Sin badge - Para productos regulares"
+  },
+
+  "_categorias_sugeridas": [
+    "camisetas",
+    "sudaderas",
+    "pantalones",
+    "chaquetas",
+    "accesorios",
+    "gorras",
+    "calzado"
+  ],
+
+  "_workflow_agregar_producto": {
+    "paso_1": "Prepara tu imagen del producto (formato PNG o JPG)",
+    "paso_2": "Guarda la imagen en: images/productos/nombre_archivo.png",
+    "paso_3": "Abre el archivo config.json",
+    "paso_4": "Ve a la sección 'productos' (es un array [ ])",
+    "paso_5": "Agrega una coma después del último producto",
+    "paso_6": "Pega el objeto del nuevo producto",
+    "paso_7": "Ajusta los datos (id, nombre, precio, stock, imagen, etc.)",
+    "paso_8": "Guarda el archivo",
+    "paso_9": "Valida el JSON en jsonlint.com (opcional pero recomendado)",
+    "paso_10": "Recarga tu página web - ¡El producto aparecerá!"
+  },
+
+  "_ejemplo_completo_en_config": {
+    "productos": [
+      {
+        "id": "camiseta-negra-001",
+        "nombre": "Camiseta Negra Oversize",
+        "comentario": "... producto existente ..."
+      },
+      {
+        "id": "sudadera-negra-001", 
+        "nombre": "Sudadera Negra Oversize",
+        "comentario": "... otro producto existente ..."
+      },
+      {
+        "comentario": "↓ AGREGA UNA COMA AQUÍ ARRIBA ↑",
+        "id": "tu-nuevo-producto-001",
+        "nombre": "Tu Nuevo Producto",
+        "descripcion": "Descripción del nuevo producto",
+        "precio": 95000,
+        "stock": 20,
+        "imagen": "images/productos/tu_imagen.png",
+        "badge": "Nuevo",
+        "categoria": "tu_categoria",
+        "tallas": ["S", "M", "L", "XL"],
+        "colores": ["negro", "blanco"],
+        "activo": true
+      }
+    ]
+  },
+
+  "_errores_comunes": {
+    "error_1": {
+      "problema": "Página en blanco o error al cargar",
+      "causa": "JSON mal formateado (falta coma, llave, etc.)",
+      "solucion": "Valida tu JSON en jsonlint.com"
+    },
+    "error_2": {
+      "problema": "Producto no aparece",
+      "causa": "activo: false o producto fuera del array",
+      "solucion": "Verifica que activo sea true y esté dentro de [ ]"
+    },
+    "error_3": {
+      "problema": "Imagen no se ve",
+      "causa": "Ruta de imagen incorrecta",
+      "solucion": "Verifica que la imagen exista en la carpeta especificada"
+    },
+    "error_4": {
+      "problema": "Precio se ve raro",
+      "causa": "Precio como texto en vez de número",
+      "solucion": "Usa 85000 NO '85000' (sin comillas)"
+    }
+  }
+}
+

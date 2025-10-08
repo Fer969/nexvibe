@@ -87,105 +87,12 @@
                 <p class="section-subtitle">La esencia del streetwear colombiano</p>
             </div>
 
-            <div class="productos-grid">
-                <!-- Producto 1 -->
-                <div class="producto-card" data-stock="25">
-                    <div class="producto-image">
-                        <div class="producto-badge">Nuevo</div>
-                        <div class="stock-badge"></div>
-                        <img src="images/productos/camiseta_negra.png" alt="Camiseta Negra NEXVIBE" loading="lazy">
-                        <div class="producto-overlay">
-                            <button class="btn-add-cart" data-product="Camiseta Negra Oversize" data-price="85000">
-                                <i class="fas fa-shopping-bag"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="producto-info">
-                        <h3 class="producto-nombre">Camiseta Negra Oversize</h3>
-                        <p class="producto-descripcion">Camiseta oversize 100% algodón</p>
-                        <p class="producto-precio">$85,000 COP</p>
-                        <p class="producto-stock"></p>
-                    </div>
+            <div class="productos-grid" id="productosGrid">
+                <!-- Los productos se cargan dinámicamente desde config.json -->
+                <div class="loading-products">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Cargando productos...</p>
                 </div>
-
-                <!-- Producto 2 -->
-                <div class="producto-card" data-stock="5">
-                    <div class="producto-image">
-                        <div class="producto-badge hot">Hot</div>
-                        <div class="stock-badge"></div>
-                        <img src="images/productos/sudadera_negra.png" alt="Sudadera Negra NEXVIBE" loading="lazy">
-                        <div class="producto-overlay">
-                            <button class="btn-add-cart" data-product="Sudadera Negra Oversize" data-price="135000">
-                                <i class="fas fa-shopping-bag"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="producto-info">
-                        <h3 class="producto-nombre">Sudadera Negra Oversize</h3>
-                        <p class="producto-descripcion">Sudadera premium con capucha</p>
-                        <p class="producto-precio">$135,000 COP</p>
-                        <p class="producto-stock"></p>
-                    </div>
-                </div>
-
-                <!-- Producto 3 -->
-                <div class="producto-card" data-stock="0">
-                    <div class="producto-image">
-                        <div class="stock-badge"></div>
-                        <img src="images/productos/camiseta_blanca.png" alt="Camiseta Blanca NEXVIBE" loading="lazy">
-                        <div class="producto-overlay">
-                            <button class="btn-add-cart" data-product="Camiseta Blanca Oversize" data-price="85000">
-                                <i class="fas fa-shopping-bag"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="producto-info">
-                        <h3 class="producto-nombre">Camiseta Blanca Oversize</h3>
-                        <p class="producto-descripcion">Camiseta oversize 100% algodón</p>
-                        <p class="producto-precio">$85,000 COP</p>
-                        <p class="producto-stock"></p>
-                    </div>
-                </div>
-
-                <!-- Producto 4 -->
-                <div class="producto-card" data-stock="15">
-                    <div class="producto-image">
-                        <div class="stock-badge"></div>
-                        <img src="images/productos/gorra_negra.png" alt="Gorra Negra NEXVIBE" loading="lazy">
-                        <div class="producto-overlay">
-                            <button class="btn-add-cart" data-product="Gorra Negra Urban" data-price="65000">
-                                <i class="fas fa-shopping-bag"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="producto-info">
-                        <h3 class="producto-nombre">Gorra Negra Urban</h3>
-                        <p class="producto-descripcion">Gorra ajustable estilo urbano</p>
-                        <p class="producto-precio">$65,000 COP</p>
-                        <p class="producto-stock"></p>
-                    </div>
-                </div>
-
-                <!-- Producto 5 -->
-                <div class="producto-card" data-stock="8">
-                    <div class="producto-image">
-                        <div class="producto-badge">Nuevo</div>
-                        <div class="stock-badge"></div>
-                        <img src="images/productos/gorra_blanca.png" alt="Gorra Blanca NEXVIBE" loading="lazy">
-                        <div class="producto-overlay">
-                            <button class="btn-add-cart" data-product="Gorra Blanca Urban" data-price="65000">
-                                <i class="fas fa-shopping-bag"></i> Agregar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="producto-info">
-                        <h3 class="producto-nombre">Gorra Blanca Urban</h3>
-                        <p class="producto-descripcion">Gorra ajustable estilo urbano</p>
-                        <p class="producto-precio">$65,000 COP</p>
-                        <p class="producto-stock"></p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>

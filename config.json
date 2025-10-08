@@ -25,6 +25,73 @@
     "instagram": "https://instagram.com/nexvibe.co",
     "tiktok": "https://tiktok.com/@nexvibe.co",
     "facebook": "https://facebook.com/nexvibe.co"
-  }
+  },
+  "productos": [
+    {
+      "id": "camiseta-negra-001",
+      "nombre": "Camiseta Negra Oversize",
+      "descripcion": "Camiseta oversize 100% algodón",
+      "precio": 85000,
+      "stock": 25,
+      "imagen": "images/productos/camiseta_negra.png",
+      "badge": "Nuevo",
+      "categoria": "camisetas",
+      "tallas": ["S", "M", "L", "XL", "XXL"],
+      "colores": ["negro", "blanco"],
+      "activo": true
+    },
+    {
+      "id": "sudadera-negra-001",
+      "nombre": "Sudadera Negra Oversize",
+      "descripcion": "Sudadera premium con capucha",
+      "precio": 135000,
+      "stock": 5,
+      "imagen": "images/productos/sudadera_negra.png",
+      "badge": "Hot",
+      "categoria": "sudaderas",
+      "tallas": ["S", "M", "L", "XL", "XXL"],
+      "colores": ["negro", "gris"],
+      "activo": true
+    },
+    {
+      "id": "camiseta-blanca-001",
+      "nombre": "Camiseta Blanca Oversize",
+      "descripcion": "Camiseta oversize 100% algodón",
+      "precio": 85000,
+      "stock": 0,
+      "imagen": "images/productos/camiseta_blanca.png",
+      "badge": null,
+      "categoria": "camisetas",
+      "tallas": ["S", "M", "L", "XL", "XXL"],
+      "colores": ["blanco"],
+      "activo": true
+    },
+    {
+      "id": "gorra-negra-001",
+      "nombre": "Gorra Negra Urban",
+      "descripcion": "Gorra ajustable estilo urbano",
+      "precio": 65000,
+      "stock": 15,
+      "imagen": "images/productos/gorra_negra.png",
+      "badge": null,
+      "categoria": "accesorios",
+      "tallas": ["Única"],
+      "colores": ["negro"],
+      "activo": true
+    },
+    {
+      "id": "gorra-blanca-001",
+      "nombre": "Gorra Blanca Urban",
+      "descripcion": "Gorra ajustable estilo urbano",
+      "precio": 65000,
+      "stock": 8,
+      "imagen": "images/productos/gorra_blanca.png",
+      "badge": "Nuevo",
+      "categoria": "accesorios",
+      "tallas": ["Única"],
+      "colores": ["blanco"],
+      "activo": true
+    }
+  ]
 }
 

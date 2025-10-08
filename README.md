@@ -101,27 +101,26 @@ También actualiza los enlaces en `index.html`:
 
 ### Agregar productos
 
-En `index.html`, busca la sección `.productos-grid` y agrega más productos siguiendo esta estructura:
+**¡NUEVO!** Los productos ahora se gestionan desde `config.json`. 
 
-```html
-<div class="producto-card">
-    <div class="producto-image">
-        <div class="producto-badge">Nuevo</div>
-        <div class="producto-placeholder">
-            <i class="fas fa-tshirt"></i>
-        </div>
-        <div class="producto-overlay">
-            <button class="btn-add-cart" data-product="Nombre del Producto" data-price="85000">
-                <i class="fas fa-shopping-bag"></i> Agregar
-            </button>
-        </div>
-    </div>
-    <div class="producto-info">
-        <h3 class="producto-nombre">Nombre del Producto</h3>
-        <p class="producto-descripcion">Descripción breve</p>
-        <p class="producto-precio">$85,000 COP</p>
-    </div>
-</div>
+Ver documentación completa en **GESTION_PRODUCTOS.md**
+
+Estructura básica:
+
+```json
+{
+  "id": "producto-001",
+  "nombre": "Nombre del Producto",
+  "descripcion": "Descripción breve",
+  "precio": 85000,
+  "stock": 25,
+  "imagen": "images/productos/imagen.png",
+  "badge": "Nuevo",
+  "categoria": "camisetas",
+  "tallas": ["S", "M", "L", "XL"],
+  "colores": ["negro", "blanco"],
+  "activo": true
+}
 ```
 
 ### Reemplazar imágenes placeholder
@@ -160,6 +159,54 @@ En `styles.css`, actualiza la variable:
 
 ---
 
+## 📦 Sistema de Inventario Dinámico (NUEVO)
+
+**¡Ahora puedes gestionar todos tus productos desde un solo archivo JSON!**
+
+### Características:
+- ✅ **Carga dinámica** de productos desde `config.json`
+- ✅ **Control de inventario** en tiempo real
+  - 🟢 Verde "Disponible" (más de 10 unidades)
+  - 🟠 Naranja "Pocas unidades" (10 o menos)
+  - 🔴 Rojo "Agotado" (0 unidades)
+- ✅ **Validación automática** de stock antes de comprar
+- ✅ **Indicadores visuales** en tarjetas y modal
+- ✅ **Bloqueo de compras** para productos agotados
+
+### Cómo agregar/editar productos:
+
+1. Abre `config.json`
+2. Busca la sección `"productos"`
+3. Agrega o edita productos con este formato:
+
+```json
+{
+  "id": "producto-001",
+  "nombre": "Nombre del Producto",
+  "descripcion": "Descripción breve",
+  "precio": 85000,
+  "stock": 25,
+  "imagen": "images/productos/imagen.png",
+  "badge": "Nuevo",
+  "categoria": "camisetas",
+  "tallas": ["S", "M", "L", "XL"],
+  "colores": ["negro", "blanco"],
+  "activo": true
+}
+```
+
+4. Guarda y recarga la página
+
+### Documentación completa:
+- 📚 **GESTION_PRODUCTOS.md** - Guía detallada paso a paso
+- 📝 **EJEMPLO_AGREGAR_PRODUCTO.json** - Plantilla con ejemplos
+
+### ⚠️ Importante:
+Este sistema **muestra** el inventario pero **NO actualiza automáticamente** cuando se vende. 
+Debes actualizar manualmente el campo `"stock"` en `config.json` después de cada venta.
+
+---
+
 ## 🛒 Sistema de Carrito
 
 El carrito de compras incluye:
@@ -170,14 +217,16 @@ El carrito de compras incluye:
 - ✅ Cálculo automático del total
 - ✅ Persistencia con localStorage (se mantiene al recargar)
 - ✅ Botón de checkout que envía el pedido por WhatsApp
+- ✅ **NUEVO:** Validación de stock antes de agregar
 
 ### Flujo de compra
 
-1. Usuario agrega productos al carrito
+1. Usuario agrega productos al carrito (se valida el stock)
 2. Revisa el carrito haciendo clic en el ícono del carrito
 3. Hace clic en "Finalizar compra"
 4. Se abre WhatsApp con el pedido pre-formateado
 5. Usuario completa el pedido por WhatsApp
+6. **TÚ actualizas el stock en `config.json` manualmente**
 
 ---
 
@@ -272,11 +321,34 @@ vercel
 
 ### Actualizar productos
 
-Modifica la sección de productos en `index.html` agregando o eliminando tarjetas de productos.
+**¡Ahora es mucho más fácil!** Solo edita `config.json`:
+
+1. Para **agregar** un producto: Agrega un nuevo objeto al array `productos`
+2. Para **editar** un producto: Cambia los valores del producto existente
+3. Para **ocultar** un producto: Cambia `"activo": false`
+4. Para **eliminar** un producto: Borra el objeto completo
 
 ### Actualizar precios
 
-Busca y reemplaza los valores en los atributos `data-price` y en los elementos `.producto-precio`.
+Edita el campo `"precio"` en `config.json`:
+
+```json
+{
+  "id": "camiseta-001",
+  "precio": 95000  ← Cambia este valor
+}
+```
+
+### Actualizar stock
+
+Después de cada venta, actualiza el campo `"stock"`:
+
+```json
+{
+  "id": "camiseta-001",
+  "stock": 23  ← Resta las unidades vendidas
+}
+```
 
 ### Cambiar contenido
 

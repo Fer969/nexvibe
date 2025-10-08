@@ -528,6 +528,27 @@ button {
     gap: var(--spacing-md);
 }
 
+.loading-products {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    gap: var(--spacing-sm);
+    color: var(--color-grey-medium);
+}
+
+.loading-products i {
+    font-size: 3rem;
+    color: var(--color-electric-blue);
+}
+
+.loading-products p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
 .producto-card {
     background-color: var(--color-white);
     transition: var(--transition-normal);
