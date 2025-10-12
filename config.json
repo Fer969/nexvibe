@@ -28,8 +28,8 @@
   },
   "productos": [
     {
-      "id": "camiseta-negra-001",
-      "nombre": "Camiseta Negra Oversize",
+      "id": "camiseta-oversize-001",
+      "nombre": "Camiseta Oversize",
       "descripcion": "Camiseta oversize 100% algodón",
       "precio": 85000,
       "stock": 25,
@@ -37,12 +37,16 @@
       "badge": "Nuevo",
       "categoria": "camisetas",
       "tallas": ["S", "M", "L", "XL", "XXL"],
-      "colores": ["negro", "blanco", "gris"],
+      "colores": [
+        {"nombre": "negro", "imagen": "images/productos/camiseta_negra.png", "stock": 25},
+        {"nombre": "blanco", "imagen": "images/productos/camiseta_blanca.png", "stock": 0},
+        {"nombre": "gris", "imagen": "images/productos/camiseta_gris.png", "stock": 15}
+      ],
       "activo": true
     },
     {
-      "id": "sudadera-negra-001",
-      "nombre": "Sudadera Negra Oversize",
+      "id": "sudadera-oversize-001",
+      "nombre": "Sudadera Oversize",
       "descripcion": "Sudadera premium con capucha",
       "precio": 135000,
       "stock": 5,
@@ -50,46 +54,28 @@
       "badge": "Hot",
       "categoria": "sudaderas",
       "tallas": ["S", "M", "L", "XL", "XXL"],
-      "colores": ["negro", "blanco", "gris"],
+      "colores": [
+        {"nombre": "negro", "imagen": "images/productos/sudadera_negra.png", "stock": 5},
+        {"nombre": "blanco", "imagen": "images/productos/sudadera_blanca.png", "stock": 3},
+        {"nombre": "gris", "imagen": "images/productos/sudadera_gris.png", "stock": 2}
+      ],
       "activo": true
     },
     {
-      "id": "camiseta-blanca-001",
-      "nombre": "Camiseta Blanca Oversize",
-      "descripcion": "Camiseta oversize 100% algodón",
-      "precio": 85000,
-      "stock": 0,
-      "imagen": "images/productos/camiseta_blanca.png",
-      "badge": null,
-      "categoria": "camisetas",
-      "tallas": ["S", "M", "L", "XL", "XXL"],
-      "colores": ["blanco", "negro", "gris"],
-      "activo": true
-    },
-    {
-      "id": "gorra-negra-001",
-      "nombre": "Gorra Negra Urban",
+      "id": "gorra-urban-001",
+      "nombre": "Gorra Urban",
       "descripcion": "Gorra ajustable estilo urbano",
       "precio": 65000,
-      "stock": 15,
+      "stock": 23,
       "imagen": "images/productos/gorra_negra.png",
-      "badge": null,
-      "categoria": "accesorios",
-      "tallas": ["Única"],
-      "colores": ["negro", "blanco", "gris"],
-      "activo": true
-    },
-    {
-      "id": "gorra-blanca-001",
-      "nombre": "Gorra Blanca Urban",
-      "descripcion": "Gorra ajustable estilo urbano",
-      "precio": 65000,
-      "stock": 8,
-      "imagen": "images/productos/gorra_blanca.png",
       "badge": "Nuevo",
       "categoria": "accesorios",
       "tallas": ["Única"],
-      "colores": ["blanco", "negro", "gris"],
+      "colores": [
+        {"nombre": "negro", "imagen": "images/productos/gorra_negra.png", "stock": 15},
+        {"nombre": "blanco", "imagen": "images/productos/gorra_blanca.png", "stock": 8},
+        {"nombre": "gris", "imagen": "images/productos/gorra_gris.png", "stock": 5}
+      ],
       "activo": true
     }
   ]

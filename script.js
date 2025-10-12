@@ -389,6 +389,11 @@ function getProductImage(productName) {
         return productFull ? productFull.imagen : 'images/productos/default.png';
     }
     
+    // Si el producto tiene colores con imágenes específicas, usar la imagen del primer color
+    if (product.colores && product.colores.length > 0 && product.colores[0].imagen) {
+        return product.colores[0].imagen;
+    }
+    
     return product.imagen;
 }
 
@@ -803,29 +808,39 @@ function initProductModal() {
         colorOptions.innerHTML = '';
         
         // Crear botones para cada color disponible
-        currentProductData.colores.forEach((color, index) => {
+        currentProductData.colores.forEach((colorObj, index) => {
             const colorBtn = document.createElement('button');
             colorBtn.className = `color-btn ${index === 0 ? 'active' : ''}`;
-            colorBtn.setAttribute('data-color', color);
+            colorBtn.setAttribute('data-color', colorObj.nombre);
+            colorBtn.setAttribute('data-image', colorObj.imagen);
+            colorBtn.setAttribute('data-stock', colorObj.stock);
             
             // Estilos según el color
             const colorStyles = {
-                'negro': 'background-color: #000; border: 1px solid #333;',
-                'blanco': 'background-color: #fff; border: 1px solid #ddd;',
-                'gris': 'background-color: #808080; border: 1px solid #666;',
-                'azul': 'background-color: #0066cc; border: 1px solid #004499;',
-                'rojo': 'background-color: #cc0000; border: 1px solid #990000;'
+                'negro': 'background-color: #000; border: 1px solid #333; color: white;',
+                'blanco': 'background-color: #fff; border: 1px solid #ddd; color: black;',
+                'gris': 'background-color: #808080; border: 1px solid #666; color: white;',
+                'azul': 'background-color: #0066cc; border: 1px solid #004499; color: white;',
+                'rojo': 'background-color: #cc0000; border: 1px solid #990000; color: white;'
             };
             
-            colorBtn.style.cssText = colorStyles[color] || 'background-color: #f0f0f0; border: 1px solid #ccc;';
-            colorBtn.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+            colorBtn.style.cssText = colorStyles[colorObj.nombre] || 'background-color: #f0f0f0; border: 1px solid #ccc; color: black;';
+            colorBtn.textContent = `${colorObj.nombre.charAt(0).toUpperCase() + colorObj.nombre.slice(1)} (${colorObj.stock})`;
+            
+            // Deshabilitar si no hay stock
+            if (colorObj.stock === 0) {
+                colorBtn.disabled = true;
+                colorBtn.style.opacity = '0.5';
+                colorBtn.style.cursor = 'not-allowed';
+            }
             
             colorOptions.appendChild(colorBtn);
         });
         
-        // Establecer el primer color como seleccionado
-        if (currentProductData.colores.length > 0) {
-            selectedColor = currentProductData.colores[0];
+        // Establecer el primer color disponible como seleccionado
+        const firstAvailableColor = currentProductData.colores.find(c => c.stock > 0) || currentProductData.colores[0];
+        if (firstAvailableColor) {
+            selectedColor = firstAvailableColor.nombre;
             updateProductImage();
         }
     }
@@ -833,24 +848,23 @@ function initProductModal() {
     function updateProductImage() {
         if (!currentProductData) return;
         
-        // Crear el nombre del archivo de imagen basado en el color seleccionado
-        const baseName = currentProductData.nombre.toLowerCase()
-            .replace(/\s+/g, '_')
-            .replace('oversize', '')
-            .replace('urban', '')
-            .replace('premium', '')
-            .trim();
+        // Buscar el objeto de color seleccionado
+        const selectedColorObj = currentProductData.colores.find(c => c.nombre === selectedColor);
         
-        const colorName = selectedColor.toLowerCase();
-        const imagePath = `images/productos/${baseName}_${colorName}.png`;
-        
-        // Actualizar la imagen
-        const modalImage = document.getElementById('modalProductImage');
-        modalImage.src = imagePath;
-        
-        // Actualizar la imagen del producto actual también
-        if (currentProduct) {
-            currentProduct.image = imagePath;
+        if (selectedColorObj) {
+            // Actualizar la imagen con la imagen específica del color
+            const modalImage = document.getElementById('modalProductImage');
+            modalImage.src = selectedColorObj.imagen;
+            
+            // Actualizar la imagen del producto actual también
+            if (currentProduct) {
+                currentProduct.image = selectedColorObj.imagen;
+            }
+            
+            // Actualizar el stock del producto actual
+            if (currentProduct) {
+                currentProduct.stock = selectedColorObj.stock;
+            }
         }
     }
 
@@ -861,7 +875,9 @@ function initProductModal() {
         // Resetear selecciones
         selectedSize = 'M';
         if (currentProductData && currentProductData.colores && currentProductData.colores.length > 0) {
-            selectedColor = currentProductData.colores[0];
+            // Seleccionar el primer color disponible (con stock > 0)
+            const firstAvailableColor = currentProductData.colores.find(c => c.stock > 0) || currentProductData.colores[0];
+            selectedColor = firstAvailableColor.nombre;
         } else {
             selectedColor = 'negro';
         }
