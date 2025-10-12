@@ -825,22 +825,22 @@ function initProductModal() {
             };
             
             colorBtn.style.cssText = colorStyles[colorObj.nombre] || 'background-color: #f0f0f0; border: 1px solid #ccc; color: black;';
-            colorBtn.textContent = `${colorObj.nombre.charAt(0).toUpperCase() + colorObj.nombre.slice(1)} (${colorObj.stock})`;
+            colorBtn.textContent = colorObj.nombre.charAt(0).toUpperCase() + colorObj.nombre.slice(1);
             
-            // Deshabilitar si no hay stock
-            if (colorObj.stock === 0) {
-                colorBtn.disabled = true;
-                colorBtn.style.opacity = '0.5';
-                colorBtn.style.cursor = 'not-allowed';
-            }
+            // Por ahora, todos los colores están disponibles
+            // (Comentado para permitir todos los colores)
+            // if (colorObj.stock === 0) {
+            //     colorBtn.disabled = true;
+            //     colorBtn.style.opacity = '0.5';
+            //     colorBtn.style.cursor = 'not-allowed';
+            // }
             
             colorOptions.appendChild(colorBtn);
         });
         
-        // Establecer el primer color disponible como seleccionado
-        const firstAvailableColor = currentProductData.colores.find(c => c.stock > 0) || currentProductData.colores[0];
-        if (firstAvailableColor) {
-            selectedColor = firstAvailableColor.nombre;
+        // Establecer el primer color como seleccionado
+        if (currentProductData.colores.length > 0) {
+            selectedColor = currentProductData.colores[0].nombre;
             updateProductImage();
         }
     }
@@ -875,9 +875,8 @@ function initProductModal() {
         // Resetear selecciones
         selectedSize = 'M';
         if (currentProductData && currentProductData.colores && currentProductData.colores.length > 0) {
-            // Seleccionar el primer color disponible (con stock > 0)
-            const firstAvailableColor = currentProductData.colores.find(c => c.stock > 0) || currentProductData.colores[0];
-            selectedColor = firstAvailableColor.nombre;
+            // Seleccionar el primer color
+            selectedColor = currentProductData.colores[0].nombre;
         } else {
             selectedColor = 'negro';
         }
