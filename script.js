@@ -267,11 +267,7 @@ function initCart() {
             const productCard = this.closest('.producto-card');
             const stock = productCard ? parseInt(productCard.getAttribute('data-stock')) : null;
             
-            // Verificar stock antes de agregar
-            if (stock !== null && stock === 0) {
-                alert('Lo sentimos, este producto está agotado.');
-                return;
-            }
+            // Por ahora, no verificar stock
             
             const productName = this.getAttribute('data-product');
             const productPrice = parseInt(this.getAttribute('data-price'));
@@ -739,39 +735,27 @@ function initProductModal() {
             modalBadge.style.display = 'none';
         }
         
-        // Stock info
+        // Ocultar información de stock en el modal por ahora
         const modalStockInfo = document.getElementById('modalStockInfo');
-        if (currentProduct.stock !== undefined) {
-            const stockStatus = getStockStatus(currentProduct.stock);
-            modalStockInfo.className = `modal-stock-info ${stockStatus.status}`;
-            modalStockInfo.innerHTML = `<i class="${stockStatus.icon}"></i> ${stockStatus.text}`;
-            modalStockInfo.style.display = 'flex';
-            
-            // Deshabilitar botones si está agotado
-            const modalAddBtn = document.getElementById('modalAddToCart');
-            const modalBuyBtn = document.getElementById('modalBuyNow');
-            
-            if (currentProduct.stock === 0) {
-                modalAddBtn.disabled = true;
-                modalAddBtn.innerHTML = '<i class="fas fa-ban"></i> Producto agotado';
-                modalAddBtn.style.opacity = '0.5';
-                modalAddBtn.style.cursor = 'not-allowed';
-                
-                modalBuyBtn.disabled = true;
-                modalBuyBtn.style.opacity = '0.5';
-                modalBuyBtn.style.cursor = 'not-allowed';
-            } else {
-                modalAddBtn.disabled = false;
-                modalAddBtn.innerHTML = '<i class="fas fa-shopping-bag"></i> Agregar al carrito';
-                modalAddBtn.style.opacity = '1';
-                modalAddBtn.style.cursor = 'pointer';
-                
-                modalBuyBtn.disabled = false;
-                modalBuyBtn.style.opacity = '1';
-                modalBuyBtn.style.cursor = 'pointer';
-            }
-        } else {
+        if (modalStockInfo) {
             modalStockInfo.style.display = 'none';
+        }
+        
+        // Mantener botones habilitados
+        const modalAddBtn = document.getElementById('modalAddToCart');
+        const modalBuyBtn = document.getElementById('modalBuyNow');
+        
+        if (modalAddBtn) {
+            modalAddBtn.disabled = false;
+            modalAddBtn.innerHTML = '<i class="fas fa-shopping-bag"></i> Agregar al carrito';
+            modalAddBtn.style.opacity = '1';
+            modalAddBtn.style.cursor = 'pointer';
+        }
+        
+        if (modalBuyBtn) {
+            modalBuyBtn.disabled = false;
+            modalBuyBtn.style.opacity = '1';
+            modalBuyBtn.style.cursor = 'pointer';
         }
     }
     
@@ -936,17 +920,7 @@ function initProductModal() {
         }
         
         if (currentProduct && currentProduct.price) {
-            // Verificar stock
-            if (currentProduct.stock === 0) {
-                alert('Lo sentimos, este producto está agotado.');
-                return;
-            }
-            
-            // Verificar si hay suficiente stock para la cantidad solicitada
-            if (currentProduct.stock < quantity) {
-                alert(`Lo sentimos, solo hay ${currentProduct.stock} ${currentProduct.stock === 1 ? 'unidad disponible' : 'unidades disponibles'}.`);
-                return;
-            }
+            // Por ahora, no verificar stock
             
             const totalPrice = parseInt(currentProduct.price) * quantity;
             const productName = `${currentProduct.name} - Talla: ${selectedSize}, Color: ${selectedColor}`;
@@ -990,17 +964,7 @@ function initProductModal() {
         }
         
         if (currentProduct && currentProduct.price) {
-            // Verificar stock
-            if (currentProduct.stock === 0) {
-                alert('Lo sentimos, este producto está agotado.');
-                return;
-            }
-            
-            // Verificar si hay suficiente stock para la cantidad solicitada
-            if (currentProduct.stock < quantity) {
-                alert(`Lo sentimos, solo hay ${currentProduct.stock} ${currentProduct.stock === 1 ? 'unidad disponible' : 'unidades disponibles'}.`);
-                return;
-            }
+            // Por ahora, no verificar stock
             
             const totalPrice = parseInt(currentProduct.price) * quantity;
             const productName = `${currentProduct.name} - Talla: ${selectedSize}, Color: ${selectedColor}`;
