@@ -192,40 +192,19 @@ function initStockSystem() {
         const stockInfo = card.querySelector('.producto-stock');
         const addButton = card.querySelector('.btn-add-cart');
         
-        // Determinar estado del stock
-        let stockStatus = '';
-        let stockText = '';
-        let stockIcon = '';
-        
-        if (stock === 0) {
-            stockStatus = 'out-of-stock';
-            stockText = 'Agotado';
-            stockIcon = 'fas fa-times-circle';
-            card.classList.add('out-of-stock');
-            if (addButton) {
-                addButton.disabled = true;
-                addButton.innerHTML = '<i class="fas fa-ban"></i> Agotado';
-            }
-        } else if (stock <= 10) {
-            stockStatus = 'low-stock';
-            stockText = `¡Solo ${stock} ${stock === 1 ? 'unidad' : 'unidades'}!`;
-            stockIcon = 'fas fa-exclamation-triangle';
-        } else {
-            stockStatus = 'in-stock';
-            stockText = 'Disponible';
-            stockIcon = 'fas fa-check-circle';
-        }
-        
-        // Actualizar badge de stock
+        // Ocultar badges de stock y info de stock por ahora
         if (stockBadge) {
-            stockBadge.className = `stock-badge ${stockStatus}`;
-            stockBadge.textContent = stock === 0 ? 'Agotado' : stock <= 10 ? `${stock} ${stock === 1 ? 'unidad' : 'unidades'}` : 'Disponible';
+            stockBadge.style.display = 'none';
         }
         
-        // Actualizar info de stock
         if (stockInfo) {
-            stockInfo.className = `producto-stock ${stockStatus}`;
-            stockInfo.innerHTML = `<i class="${stockIcon}"></i> ${stockText}`;
+            stockInfo.style.display = 'none';
+        }
+        
+        // Mantener solo la funcionalidad básica del botón
+        if (addButton) {
+            addButton.disabled = false;
+            addButton.innerHTML = '<i class="fas fa-shopping-bag"></i> Agregar';
         }
     });
 }
