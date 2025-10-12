@@ -37,7 +37,7 @@
       "badge": "Nuevo",
       "categoria": "camisetas",
       "tallas": ["S", "M", "L", "XL", "XXL"],
-      "colores": ["negro", "blanco"],
+      "colores": ["negro", "blanco", "gris"],
       "activo": true
     },
     {
@@ -50,7 +50,7 @@
       "badge": "Hot",
       "categoria": "sudaderas",
       "tallas": ["S", "M", "L", "XL", "XXL"],
-      "colores": ["negro", "gris"],
+      "colores": ["negro", "blanco", "gris"],
       "activo": true
     },
     {
@@ -63,7 +63,7 @@
       "badge": null,
       "categoria": "camisetas",
       "tallas": ["S", "M", "L", "XL", "XXL"],
-      "colores": ["blanco"],
+      "colores": ["blanco", "negro", "gris"],
       "activo": true
     },
     {
@@ -76,7 +76,7 @@
       "badge": null,
       "categoria": "accesorios",
       "tallas": ["Única"],
-      "colores": ["negro"],
+      "colores": ["negro", "blanco", "gris"],
       "activo": true
     },
     {
@@ -89,7 +89,7 @@
       "badge": "Nuevo",
       "categoria": "accesorios",
       "tallas": ["Única"],
-      "colores": ["blanco"],
+      "colores": ["blanco", "negro", "gris"],
       "activo": true
     }
   ]

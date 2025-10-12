@@ -692,6 +692,7 @@ function initProductModal() {
     let selectedSize = 'M';
     let selectedColor = 'negro';
     let quantity = 1;
+    let currentProductData = null; // Para guardar los datos completos del producto
     
     // Abrir modal al hacer clic en producto
     productoCards.forEach(card => {
@@ -708,6 +709,10 @@ function initProductModal() {
             const productBadge = this.querySelector('.producto-badge');
             const addToCartBtn = this.querySelector('.btn-add-cart');
             const stock = parseInt(this.getAttribute('data-stock'));
+            
+            // Buscar el producto completo en la lista
+            const productId = this.getAttribute('data-product-id');
+            currentProductData = productos.find(p => p.id === productId);
             
             // Guardar datos del producto actual
             currentProduct = {
@@ -736,6 +741,9 @@ function initProductModal() {
         document.getElementById('modalTitle').textContent = currentProduct.name;
         document.getElementById('modalDescription').textContent = currentProduct.description;
         document.getElementById('modalPrice').textContent = currentProduct.price ? `$${parseInt(currentProduct.price).toLocaleString()} COP` : 'Precio no disponible';
+        
+        // Cargar colores disponibles
+        loadAvailableColors();
         
         // Badge
         const modalBadge = document.getElementById('modalBadge');
@@ -783,13 +791,80 @@ function initProductModal() {
         }
     }
     
+    function loadAvailableColors() {
+        const colorOptions = document.getElementById('colorOptions');
+        
+        if (!currentProductData || !currentProductData.colores) {
+            colorOptions.innerHTML = '<p>No hay colores disponibles</p>';
+            return;
+        }
+        
+        // Limpiar opciones anteriores
+        colorOptions.innerHTML = '';
+        
+        // Crear botones para cada color disponible
+        currentProductData.colores.forEach((color, index) => {
+            const colorBtn = document.createElement('button');
+            colorBtn.className = `color-btn ${index === 0 ? 'active' : ''}`;
+            colorBtn.setAttribute('data-color', color);
+            
+            // Estilos según el color
+            const colorStyles = {
+                'negro': 'background-color: #000; border: 1px solid #333;',
+                'blanco': 'background-color: #fff; border: 1px solid #ddd;',
+                'gris': 'background-color: #808080; border: 1px solid #666;',
+                'azul': 'background-color: #0066cc; border: 1px solid #004499;',
+                'rojo': 'background-color: #cc0000; border: 1px solid #990000;'
+            };
+            
+            colorBtn.style.cssText = colorStyles[color] || 'background-color: #f0f0f0; border: 1px solid #ccc;';
+            colorBtn.textContent = color.charAt(0).toUpperCase() + color.slice(1);
+            
+            colorOptions.appendChild(colorBtn);
+        });
+        
+        // Establecer el primer color como seleccionado
+        if (currentProductData.colores.length > 0) {
+            selectedColor = currentProductData.colores[0];
+            updateProductImage();
+        }
+    }
+    
+    function updateProductImage() {
+        if (!currentProductData) return;
+        
+        // Crear el nombre del archivo de imagen basado en el color seleccionado
+        const baseName = currentProductData.nombre.toLowerCase()
+            .replace(/\s+/g, '_')
+            .replace('oversize', '')
+            .replace('urban', '')
+            .replace('premium', '')
+            .trim();
+        
+        const colorName = selectedColor.toLowerCase();
+        const imagePath = `images/productos/${baseName}_${colorName}.png`;
+        
+        // Actualizar la imagen
+        const modalImage = document.getElementById('modalProductImage');
+        modalImage.src = imagePath;
+        
+        // Actualizar la imagen del producto actual también
+        if (currentProduct) {
+            currentProduct.image = imagePath;
+        }
+    }
+
     function openModal() {
         productModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
         // Resetear selecciones
         selectedSize = 'M';
-        selectedColor = 'negro';
+        if (currentProductData && currentProductData.colores && currentProductData.colores.length > 0) {
+            selectedColor = currentProductData.colores[0];
+        } else {
+            selectedColor = 'negro';
+        }
         quantity = 1;
         updateSelections();
     }
@@ -807,12 +882,13 @@ function initProductModal() {
         });
     });
     
-    // Selección de colores
-    document.querySelectorAll('.color-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            selectedColor = this.getAttribute('data-color');
+    // Selección de colores (usando event delegation para botones dinámicos)
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('color-btn')) {
+            selectedColor = e.target.getAttribute('data-color');
             updateSelections();
-        });
+            updateProductImage(); // Actualizar imagen cuando cambie el color
+        }
     });
     
     // Selector de cantidad
@@ -843,13 +919,16 @@ function initProductModal() {
             }
         });
         
-        // Actualizar colores
-        document.querySelectorAll('.color-btn').forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.getAttribute('data-color') === selectedColor) {
-                btn.classList.add('active');
-            }
-        });
+        // Actualizar colores (solo los que están en el modal actual)
+        const colorOptions = document.getElementById('colorOptions');
+        if (colorOptions) {
+            colorOptions.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-color') === selectedColor) {
+                    btn.classList.add('active');
+                }
+            });
+        }
         
         // Actualizar cantidad
         document.getElementById('qtyNumber').textContent = quantity;
