@@ -367,8 +367,8 @@ Todo el contenido es editable directamente en `index.html`. Busca las secciones:
 ¿Tienes preguntas o necesitas ayuda?
 
 - 📧 Email: hola@nexvibe.co
-- 📱 WhatsApp: +57 300 123 4567
-- 📸 Instagram: [@nexvibe.co](https://instagram.com/nexvibe.co)
+- 📱 WhatsApp: +57 321 471 0122
+- 📸 Instagram: [@nexvibe.wear](https://instagram.com/nexvibe.wear)
 
 ---
 
@@ -441,7 +441,7 @@ Ropa sin ruido. Solo estilo.
 
 Made with 🔥 in Colombia 🇨🇴
 
-[Instagram](https://instagram.com/nexvibe.co) • [TikTok](https://tiktok.com/@nexvibe.co) • [WhatsApp](https://wa.me/1234567)
+[Instagram](https://instagram.com/nexvibe.wear) • [TikTok](https://tiktok.com/@nexvibe.wear) • [WhatsApp](https://wa.me/573214710122)
 
 </div>
 
