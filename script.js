@@ -326,11 +326,13 @@ function initCart() {
             let total = 0;
             
             cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} - $${item.price.toLocaleString()} COP\n`;
-                total += item.price;
+                const subtotal = item.price * item.quantity;
+                message += `${index + 1}. ${item.name}\n`;
+                message += `   Cantidad: ${item.quantity} x $${item.price.toLocaleString()} = $${subtotal.toLocaleString()} COP\n\n`;
+                total += subtotal;
             });
             
-            message += `\nTotal: $${total.toLocaleString()} COP`;
+            message += `Total: $${total.toLocaleString()} COP`;
             
             const whatsappUrl = `https://wa.me/573214710122?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
@@ -357,7 +359,17 @@ function closeCart() {
 }
 
 function addToCart(name, price) {
-    cart.push({ name, price });
+    // Buscar si el producto ya existe en el carrito
+    const existingItem = cart.find(item => item.name === name);
+    
+    if (existingItem) {
+        // Si existe, incrementar la cantidad
+        existingItem.quantity += 1;
+    } else {
+        // Si no existe, agregar nuevo item con cantidad 1
+        cart.push({ name, price, quantity: 1 });
+    }
+    
     updateCartUI();
     saveCartToStorage();
 }
@@ -368,13 +380,30 @@ function removeFromCart(index) {
     saveCartToStorage();
 }
 
+function decreaseQuantity(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+    } else {
+        cart.splice(index, 1);
+    }
+    updateCartUI();
+    saveCartToStorage();
+}
+
+function increaseQuantity(index) {
+    cart[index].quantity += 1;
+    updateCartUI();
+    saveCartToStorage();
+}
+
 function updateCartUI() {
     const cartCount = document.getElementById('cartCount');
     const cartItems = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
     
-    // Actualizar contador
-    cartCount.textContent = cart.length;
+    // Actualizar contador (suma total de items)
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
     
     // Actualizar items
     if (cart.length === 0) {
@@ -393,6 +422,14 @@ function updateCartUI() {
                 <div class="cart-item-info">
                     <div class="cart-item-name">${item.name}</div>
                     <div class="cart-item-price">$${item.price.toLocaleString()} COP</div>
+                    <div class="cart-item-quantity">
+                        <button class="qty-btn" onclick="decreaseQuantity(${index})">-</button>
+                        <span class="qty-number">${item.quantity}</span>
+                        <button class="qty-btn" onclick="increaseQuantity(${index})">+</button>
+                    </div>
+                    <div class="cart-item-subtotal">
+                        Subtotal: $${(item.price * item.quantity).toLocaleString()} COP
+                    </div>
                     <button class="cart-item-remove" onclick="removeFromCart(${index})">
                         Eliminar
                     </button>
@@ -402,7 +439,7 @@ function updateCartUI() {
     }
     
     // Actualizar total
-    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     cartTotal.textContent = `$${total.toLocaleString()} COP`;
 }
 
@@ -822,10 +859,17 @@ function initProductModal() {
             const totalPrice = parseInt(currentProduct.price) * quantity;
             const productName = `${currentProduct.name} - Talla: ${selectedSize}, Color: ${selectedColor}`;
             
-            // Agregar múltiples veces según la cantidad
-            for (let i = 0; i < quantity; i++) {
-                addToCart(productName, parseInt(currentProduct.price));
+            // Agregar con la cantidad especificada
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ name: productName, price: parseInt(currentProduct.price), quantity: quantity });
             }
+            
+            updateCartUI();
+            saveCartToStorage();
             
             // Feedback visual
             this.innerHTML = '<i class="fas fa-check"></i> Agregado';
@@ -864,10 +908,17 @@ function initProductModal() {
             const totalPrice = parseInt(currentProduct.price) * quantity;
             const productName = `${currentProduct.name} - Talla: ${selectedSize}, Color: ${selectedColor}`;
             
-            // Agregar al carrito
-            for (let i = 0; i < quantity; i++) {
-                addToCart(productName, parseInt(currentProduct.price));
+            // Agregar al carrito con la cantidad especificada
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ name: productName, price: parseInt(currentProduct.price), quantity: quantity });
             }
+            
+            updateCartUI();
+            saveCartToStorage();
             
             // Abrir WhatsApp
             let message = '¡Hola! Quiero hacer un pedido:\n\n';

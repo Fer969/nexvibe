@@ -1,12 +1,18 @@
-# 🚀 Configuración del Sistema Backend - NEXVIBE
+# 🚀 Configuración del Sistema - NEXVIBE
 
-## 📦 Sistema Implementado
+## 📦 Sistema Actual
 
-Has recibido un sistema completo con:
-- ✅ **Firebase Firestore** - Base de datos en tiempo real
-- ✅ **Wompi** - Pasarela de pagos para Colombia
-- ✅ **Panel Administrativo** - Gestión de productos y ventas
-- ✅ **Stock automático** - Se actualiza con cada venta
+Este proyecto es un **sitio web estático** que NO requiere backend:
+- ✅ **Frontend estático** - HTML, CSS, JavaScript puro
+- ✅ **Productos desde config.json** - Gestión simple sin base de datos
+- ✅ **Checkout por WhatsApp** - Sin pasarelas de pago
+- ✅ **Sin costos de hosting backend** - Totalmente gratis
+
+## ⚠️ NOTA IMPORTANTE
+
+**Este archivo contiene documentación de un sistema con Firebase y Wompi que fue removido.**
+Si en el futuro deseas implementar un sistema de pagos y backend, consulta esta guía. 
+Por ahora, el proyecto funciona perfectamente sin ningún backend.
 
 ---
 
@@ -54,7 +60,7 @@ Has recibido un sistema completo con:
 6. Pégalo en `firebase-config.js` (línea 5)
 
 ```javascript
-const firebaseConfig = {
+const firebaseConfig = {  
     apiKey: "AIzaSyXXXXXXXXXXXXXXXXXXX",
     authDomain: "nexvibe-tienda.firebaseapp.com",
     projectId: "nexvibe-tienda",

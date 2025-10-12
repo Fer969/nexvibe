@@ -1,8 +1,20 @@
-# 🚀 Sistema Backend Completo - NEXVIBE
+# 🚀 Sistema Backend - NEXVIBE
 
-## 🎉 ¡Sistema Implementado!
+## ⚠️ SISTEMA REMOVIDO
 
-Tu tienda NEXVIBE ahora tiene un sistema backend completo y profesional:
+**Este sistema de backend con Firebase y Wompi fue eliminado del proyecto.**
+
+Tu tienda NEXVIBE ahora funciona como un **sitio estático sin backend**, con:
+- ✅ Productos desde `config.json`
+- ✅ Checkout por WhatsApp
+- ✅ Sin costos de hosting backend
+- ✅ 100% gratuito
+
+Si en el futuro deseas implementar Firebase y Wompi, esta documentación te servirá de referencia.
+
+---
+
+## 📄 Documentación Original del Sistema (Para referencia futura)
 
 ---
 

@@ -382,9 +382,9 @@ Este proyecto es de uso libre para NEXVIBE. Si deseas usar este código para tu 
 
 Mejoras futuras planeadas:
 
+- [ ] Sistema de tallas y colores mejorado
+- [ ] Integración con pasarela de pagos (Firebase + Wompi)
 - [ ] Panel de administración para gestionar productos
-- [ ] Sistema de tallas y colores
-- [ ] Integración con pasarela de pagos
 - [ ] Galería de Instagram en tiempo real
 - [ ] Sistema de reviews y calificaciones
 - [ ] Blog/lookbook de moda

@@ -268,32 +268,20 @@
     </div>
 
     <script>
-        // Obtener parámetros de la URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const transactionId = urlParams.get('id');
-        const status = urlParams.get('status');
-        
-        // Simular verificación de transacción
+        // Simplemente mostrar éxito (ya que el pedido se hace por WhatsApp)
         setTimeout(() => {
             document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('successState').style.display = 'block';
+            document.getElementById('ordenNumero').textContent = 'NEXVIBE-' + Date.now();
             
-            if (status === 'APPROVED' || !status) {
-                // Mostrar éxito
-                document.getElementById('successState').style.display = 'block';
-                document.getElementById('ordenNumero').textContent = transactionId || 'NEXVIBE-' + Date.now();
-                document.getElementById('ordenTotal').textContent = '$' + (Math.floor(Math.random() * 200000) + 50000).toLocaleString() + ' COP';
-                
-                // Limpiar carrito
-                localStorage.removeItem('nexvibe_cart');
-            } else if (status === 'PENDING') {
-                // Mostrar pendiente
-                document.getElementById('pendingState').style.display = 'block';
-                document.getElementById('ordenNumeroPending').textContent = transactionId || 'NEXVIBE-' + Date.now();
-            } else {
-                // Mostrar error
-                document.getElementById('errorState').style.display = 'block';
-            }
-        }, 2000);
+            // Obtener el total del carrito antes de limpiarlo
+            const cart = JSON.parse(localStorage.getItem('nexvibe_cart') || '[]');
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('ordenTotal').textContent = '$' + total.toLocaleString() + ' COP';
+            
+            // Limpiar carrito
+            localStorage.removeItem('nexvibe_cart');
+        }, 1500);
     </script>
 </body>
 </html>
