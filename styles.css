@@ -745,15 +745,15 @@ button {
    =================================== */
 
 .galeria {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
     background-color: var(--color-white);
 }
 
 .galeria-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
 }
 
 .galeria-item {
@@ -804,9 +804,14 @@ button {
     color: #ff3366;
 }
 
-.galeria-cta {
-    text-align: center;
-}
+    .galeria-cta {
+        margin-top: var(--spacing-xs);
+    }
+    
+    .galeria-cta .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
 
 /* ===================================
    Contacto
@@ -1324,8 +1329,14 @@ button {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
     
+    .galeria {
+        padding: var(--spacing-md) 0;
+    }
+    
     .galeria-grid {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+        margin-bottom: var(--spacing-sm);
     }
     
     .footer-links {
@@ -1372,8 +1383,14 @@ button {
         grid-template-columns: 1fr;
     }
     
+    .galeria {
+        padding: var(--spacing-sm) 0;
+    }
+    
     .galeria-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 0.25rem;
+        margin-bottom: var(--spacing-sm);
     }
     
     .cart-sidebar {
