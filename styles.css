@@ -1478,9 +1478,9 @@ html {
     position: relative;
     background-color: var(--color-white);
     border-radius: 12px;
-    max-width: 900px;
+    max-width: 800px;
     width: 100%;
-    max-height: 90vh;
+    max-height: 85vh;
     overflow-y: auto;
     box-shadow: var(--shadow-lg);
     animation: modalSlideIn 0.3s ease;
@@ -1521,8 +1521,8 @@ html {
 .modal-product {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
 }
 
 .modal-image {
@@ -1748,24 +1748,86 @@ html {
 @media (max-width: 768px) {
     .modal-product {
         grid-template-columns: 1fr;
-        gap: var(--spacing-md);
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
     }
     
     .modal-content {
         margin: var(--spacing-sm);
-        max-height: 95vh;
+        max-height: 90vh;
+        border-radius: 8px;
+    }
+    
+    .modal-image {
+        aspect-ratio: 4/5;
+        margin-bottom: var(--spacing-sm);
     }
     
     .modal-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .modal-description {
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-sm);
     }
     
     .modal-price {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .modal-options {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .modal-options h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .size-options {
+        gap: 0.5rem;
+    }
+    
+    .size-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .color-options {
+        gap: 0.5rem;
+    }
+    
+    .color-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+    
+    .quantity-selector {
+        gap: 0.5rem;
+    }
+    
+    .qty-btn {
+        width: 30px;
+        height: 30px;
     }
     
     .modal-actions {
         flex-direction: column;
+        gap: 0.5rem;
+        margin-top: var(--spacing-sm);
+    }
+    
+    .modal-actions .btn {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .modal-details {
+        display: none; /* Ocultar detalles del producto en móvil */
     }
 }
 
