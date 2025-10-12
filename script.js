@@ -367,11 +367,29 @@ function addToCart(name, price) {
         existingItem.quantity += 1;
     } else {
         // Si no existe, agregar nuevo item con cantidad 1
-        cart.push({ name, price, quantity: 1 });
+        const image = getProductImage(name);
+        cart.push({ name, price, quantity: 1, image });
     }
     
     updateCartUI();
     saveCartToStorage();
+}
+
+function getProductImage(productName) {
+    // Buscar el producto en la lista de productos
+    const product = productos.find(p => {
+        // Extraer el nombre base del producto (sin talla y color)
+        const baseName = productName.split(' - Talla:')[0];
+        return p.nombre === baseName;
+    });
+    
+    // Si no encuentra el producto, intentar con el nombre completo
+    if (!product) {
+        const productFull = productos.find(p => p.nombre === productName);
+        return productFull ? productFull.imagen : 'images/productos/default.png';
+    }
+    
+    return product.imagen;
 }
 
 function removeFromCart(index) {
@@ -417,7 +435,8 @@ function updateCartUI() {
         cartItems.innerHTML = cart.map((item, index) => `
             <div class="cart-item">
                 <div class="cart-item-image">
-                    <i class="fas fa-tshirt"></i>
+                    <img src="${item.image || getProductImage(item.name)}" alt="${item.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-tshirt" style="display: none;"></i>
                 </div>
                 <div class="cart-item-info">
                     <div class="cart-item-name">${item.name}</div>
@@ -865,7 +884,12 @@ function initProductModal() {
             if (existingItem) {
                 existingItem.quantity += quantity;
             } else {
-                cart.push({ name: productName, price: parseInt(currentProduct.price), quantity: quantity });
+                cart.push({ 
+                    name: productName, 
+                    price: parseInt(currentProduct.price), 
+                    quantity: quantity,
+                    image: currentProduct.image
+                });
             }
             
             updateCartUI();
@@ -914,7 +938,12 @@ function initProductModal() {
             if (existingItem) {
                 existingItem.quantity += quantity;
             } else {
-                cart.push({ name: productName, price: parseInt(currentProduct.price), quantity: quantity });
+                cart.push({ 
+                    name: productName, 
+                    price: parseInt(currentProduct.price), 
+                    quantity: quantity,
+                    image: currentProduct.image
+                });
             }
             
             updateCartUI();
