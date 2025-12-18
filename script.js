@@ -242,7 +242,6 @@ function initCart() {
     const cartSidebar = document.getElementById('cartSidebar');
     const cartOverlay = document.getElementById('cartOverlay');
     const cartClose = document.getElementById('cartClose');
-    const addToCartButtons = document.querySelectorAll('.btn-add-cart');
     
     // Abrir carrito
     cartIcon.addEventListener('click', function(e) {
@@ -254,37 +253,38 @@ function initCart() {
     cartClose.addEventListener('click', closeCart);
     cartOverlay.addEventListener('click', closeCart);
     
-    // Agregar productos al carrito
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+    // Usar event delegation para botones de agregar al carrito (funciona con productos dinámicos)
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.btn-add-cart')) {
+            const button = e.target.closest('.btn-add-cart');
             e.stopPropagation();
             
             // Verificar si el producto está agotado
-            if (this.disabled) {
+            if (button.disabled) {
                 return;
             }
             
-            const productCard = this.closest('.producto-card');
+            const productCard = button.closest('.producto-card');
             const stock = productCard ? parseInt(productCard.getAttribute('data-stock')) : null;
             
             // Por ahora, no verificar stock
             
-            const productName = this.getAttribute('data-product');
-            const productPrice = parseInt(this.getAttribute('data-price'));
+            const productName = button.getAttribute('data-product');
+            const productPrice = parseInt(button.getAttribute('data-price'));
             
             addToCart(productName, productPrice);
             
             // Feedback visual
-            this.innerHTML = '<i class="fas fa-check"></i> Agregado';
-            this.style.backgroundColor = '#C6FF00';
-            this.style.color = '#000';
+            button.innerHTML = '<i class="fas fa-check"></i> Agregado';
+            button.style.backgroundColor = '#C6FF00';
+            button.style.color = '#000';
             
             setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-shopping-bag"></i> Agregar';
-                this.style.backgroundColor = '';
-                this.style.color = '';
+                button.innerHTML = '<i class="fas fa-shopping-bag"></i> Agregar';
+                button.style.backgroundColor = '';
+                button.style.color = '';
             }, 2000);
-        });
+        }
     });
     
     // Checkout button
